@@ -15,7 +15,7 @@ jobs:
     name: Build Container
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Build image and publish to registry
         run: |
           docker build -t $IMAGE_NAME:latest .
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-18.04
     needs: build
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - name: Deploy service with traefik over ssh
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
